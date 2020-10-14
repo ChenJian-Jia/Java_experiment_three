@@ -51,27 +51,76 @@
 ### （19）用return语句来控制程序的结束，避免打印提示信息之后还会执行下边的程序。
 ### （20）因为Student中覆写了toString方法，所以直接打印Student类创建的对象就可以显示toString方法中return后边的信息，实现了选课之后打印学生信息。
 ### （21）打印提示信息来提示是否退课，用in.nextInt的方法获取x值，再利用if语句来实现退课，当x等于1时，执行Student类对象的set方法，赋值为“null”就实现了退课。再次打印Student类的对象，实现了退课之后打印学生信息。
-
-
-
-
-
-
-
-
 # 五、核心代码：
-
-
-
-
-
-
-
-
-
-
-
-
+### 1.Student类中的Crurriculum类型的ccc变量和Student的构造方法的定义：
+```
+private Curriculum ccc;
+Student(int ID,String name,String sex,String hobby){
+        super(ID,name,sex);
+        this.ID = ++idCounter;
+        setHobby(hobby);
+    }
+```
+### 2.Student类中的toString方法的定义：
+```
+public String toString(){
+        return "["+"编号:"+ID+",姓名:"+name+","+"爱好:"+hobby+"]"+" 所选课程信息为："+ccc;
+    }
+```
+### 3.Person类中的构造方法的定义:
+```
+Person(int ID,String name,String sex ) {
+        setID(ID);
+        setName(name);
+        setSex(sex);
+    }
+```
+### 4.Teacher类的构造方法的定义:
+```
+Teacher(int ID,String name,String sex,String courses_taught,String hobby){
+        super(ID,name,sex);
+        setCourses_taught(courses_taught);
+        setHobby(hobby);
+    }
+```
+### 5.Curriculum类中的Teacher类型的teacher_course_taught变量和Curriculum的构造方法的定义：
+```
+Teacher teacher_course_taught;
+    Curriculum(String ID,String course_title,String place_class,String schooltime,Teacher teacher_course_taught){
+        setID(ID);
+        setCourse_title(course_title);
+        setPlace_class(place_class);
+        setSchooltime(schooltime);
+        setTeacher_course_taught(teacher_course_taught);
+    }
+```
+### 6.Curriculum类中的toString方法的定义：
+```
+public String toString(){
+        return "课程号："+ID+",课程名称:"+course_title+",上课地点:"+place_class+",教学时间:"+schooltime+",授课教师信息为:"+teacher_course_taught;
+    }
+```
+### 7.Test测试类中Teacher和Curriculum类的对象实体化：
+```
+Teacher m = new Teacher(7,"玛卡巴卡","女","芭蕾舞","跳舞");
+Curriculum q=new Curriculum("CJ_72","芭蕾舞","教300","14:20",m);
+```
+### 8.Test测试类中的选课功能的实现：
+```
+int i=in.nextInt();
+        switch(i) {
+            case 1:
+                s.setCcc(q);
+                break;
+```
+### 9.Test类中的退课功能的实现：
+```
+if(x==1) {
+            s.setCcc(null);
+            System.out.println("退课成功！");
+            System.out.println(s);
+        }
+```
 # 六、实验结果：
 
 
