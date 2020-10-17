@@ -119,7 +119,7 @@ if(x==1) {
 ```
 
 # 六、流程图
-![img3](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+![img_3](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
 # 七、实验结果：
 ### 实验结果一图片：
 ![img_1](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20experiment_three%20_picture_result_1.png)
