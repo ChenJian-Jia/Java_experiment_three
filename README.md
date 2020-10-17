@@ -117,10 +117,13 @@ if(x==1) {
             System.out.println(s);
         }
 ```
-# 六、实验结果：
+
+# 六、流程图
+![img3](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
+# 七、实验结果：
 ### 实验结果一图片：
 ![img_1](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20experiment_three%20_picture_result_1.png)
 ### 实验结果二图片：
 ![img_2](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20experiment_three%20_picture_result_2.png)
-# 七、实验感想：
+# 八、实验感想：
 ### 本次实验初步了解了系统需求，从学生选课的角度了解系统的实体及其关系，掌握面向对象类的设计方法（属性、方法），掌握了类的继承用法，通过构造方法实例化对象，学会了使用super（），用于实体化子类和掌握了使用Object跟类的toString方法，应用在相关的对象的信息输出。在这次实验中用了两个都来继承一个类，这体现了一个子类只能继承一个父类，但是一个父类可以有多个子类的思想。在这次实验中利用了super方法，用于引用父类对象。关键字“super”以继承的概念出现在类中。减少了子类的代码量并帮助实现了类的继承。如何是各个类链接起来是困扰我很久的问题，解决思想就是我已经创建好了Curriculum、Student和Teacher类了，那么我就可以利用这些类在其他类中创建该类的对象，再在其他类中的构造方法中设置这些类型的参数，这就实现了多个类的链接。如何实现对象的所有信息的全部打印，用toString放法的覆写，覆盖了Object根类的toString方法，在toString中return 所需的课程信息，但这里有要注意toString方法是String类型的，所以在返回的时候要以字符串类型的，可以加“”来实现转化为字符串输出。在Test中实体化对象时，直接调用构造方法时加入其他类的对象，实现了各个类联动。巩固了switch的方法。退课的操作方法也困扰我一段时间，当我想起来C语言课设的时候，就是赋值null或者用循环覆盖来实现，在这里了我用了null赋值方法。这次实验难度有点大，主要难度是在于如何实现各个类的联动，这个思想还是给我很大冲击的，还有如何进行选课退课的操作，总之这次课程对于我学习类与对象提供了很大的帮助还有一些编程的思想同时这也给了我很大的信心。
