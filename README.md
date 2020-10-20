@@ -31,7 +31,7 @@
 第三步：在Student中创建一些基本的成员不包括Person类中有的，创建构造方法在其中调用get和set方法，在最后对toString方法进行覆盖；  
 第四步：在Teacher中创建一些基本的成员不包括Person类中有的，创建构造方法在其中调用get和set方法，在最后对toString方法进行覆盖；  
 第五步：创建Curriculum类，设计基本变量，包括Teacher类创建变量，在创建构造方法，在其中调用设置方法，在最后对toString方法进行覆盖；  
-第六步：创建Test类，对多个类进行实体化，设置开关语句实现选课退课;  
+第六步：创建Test类，对多个类进行实体化，设置开关语句和HashSet来实现选课退课;  
 # 四、操作过程：
 （1）Student继承了Person类，所以Student类中不需要在创建ID、name和sex的成员变量，创建静态idCounter变量，创建hobby变量和创建课程类的ccc变量。创建构造方法接收ID、name、sex和hobby参数。  
 （2）在Student中的构造方法中用super调用父类Person的构造方法，Student的构造方法接收的ID、name和sex参数给super接收参数，设置ID等于id.Counter当用学生类创建多个学生对象时可以自动给这些对象的编号进行顺序赋值。  
@@ -50,11 +50,15 @@
 （15）因为Curriculum的构造方法可以接受Teacher类的参数，将创建好的Teacher类对象作为参数用于Curriculum创造对象，这实现了，课程信息和老师信息的绑定。这不仅仅显示了课程的信息，也显示了老师的信息。  
 （16）用打印语句对课程信息进行打印，因为在Curriculum类中覆写了toString方法，直接打印Curriculum创造的对象，就实现了打印课程信息，而Curriculum创造的对象中包含Teacher类创造的对象的信息，所以直接打印Curriculum类创造的对象就可以显示很全面的课程的信息。  
 （17）用打印语句来控制提示语句和分割符，是运行结果看起来更加清晰。  
-（18）利用开关语句switch接收参数i，i是从键盘输入的值，case中放置Student类创建的对象的set方法，因为Student类中的有Curriculum类型的变量ccc，在case中直接调用Student类中的对象set方法这就实现了选课。当i的值没有case与之对应是则执行default语句打印提示信息。  
-（19）用return语句来控制程序的结束，避免打印提示信息之后还会执行下边的程序。  
-（20）因为Student中覆写了toString方法，所以直接打印Student类创建的对象就可以显示toString方法中return后边的信息，实现了选课之后打印学生信息。  
-（21）打印提示信息来提示是否退课，用in.nextInt的方法获取x值，再利用if语句来实现退课，当x等于1时，执行Student类对象的set方法，赋值为“null”就实现了退课。再次打印Student类的对象，实现了退课之后打印学生信息。  
-# 五、核心代码：
+（18）创建Student类的数组用于存放Student类的对象，通过for来循环遍历Student类的数组对象。  
+（19）利用开关语句switch接收参数i，i是从键盘输入的值，case中放置Student类创建的对象的set方法，因为Student类中的有Curriculum类型的变量ccc，在case中直接调用Student类数组中的对象set方法这就实现了选课。当i的值没有case与之对应是则执行default语句打印提示信息。  
+（20）通过HashSet来将已经选完课的Student类的对象进行储存。  
+（21）选完课后用for来遍历names集合中的Object数据类型的元素，这就实现了打印课表信息，不管是选择哪一门课程都可以打印出三个Student类的信息。    
+（22）退课时直接将Student类的对象的课程set函数接收null，并利用HashSet对象的remove方法直接移除Student类的对象。  
+（23）用return语句来控制程序的结束，避免打印提示信息之后还会执行下边的程序。    
+（24）因为Student中覆写了toString方法，所以直接打印Student类创建的对象就可以显示toString方法中return后边的信息，实现了选课之后打印学生信息。    
+（25）打印提示信息来提示是否退课，用in.nextInt的方法获取x值，再利用if语句来实现退课，当x等于1时，执行Student类对象的set方法，赋值为“null”就实现了退课。退课时直接将Student类的对象的课程set函数接收null，并利用HashSet对象的remove方法直接移除Student类的对象。再次利用for循环遍历names集合打印其中的元素，实现了退课之后打印学生信息。    
+# 五、核心代码：  
 1.Student类中的Crurriculum类型的ccc变量和Student的构造方法的定义：
 ```
 private Curriculum ccc;
@@ -80,16 +84,17 @@ Person(int ID,String name,String sex ) {
 ```
 4.Teacher类的构造方法的定义:
 ```
-Teacher(int ID,String name,String sex,String courses_taught,String hobby){
+Teacher(int ID,String name,String sex,String hobby){
         super(ID,name,sex);
         setCourses_taught(courses_taught);
         setHobby(hobby);
+        setCt(ct);
     }
 ```
 5.Curriculum类中的Teacher类型的teacher_course_taught变量和Curriculum的构造方法的定义：
 ```
 Teacher teacher_course_taught;
-    Curriculum(String ID,String course_title,String place_class,String schooltime,Teacher teacher_course_taught){
+    Curriculum(String ID,String course_title,String place_class,String schooltime){
         setID(ID);
         setCourse_title(course_title);
         setPlace_class(place_class);
@@ -105,24 +110,54 @@ public String toString(){
 ```
 7.Test测试类中Teacher和Curriculum类的对象实体化：
 ```
-Teacher m = new Teacher(7,"玛卡巴卡","女","芭蕾舞","跳舞");
-Curriculum q=new Curriculum("CJ_72","芭蕾舞","教300","14:20",m);
+Teacher m = new Teacher(7, "玛卡巴卡", "女", "跳舞");
+Curriculum q = new Curriculum("CJ_72", "芭蕾舞", "教300", "14:20");
+        q.setTeacher_course_taught(m);
 ```
 8.Test测试类中的选课功能的实现：
 ```
-int i=in.nextInt();
-        switch(i) {
-            case 1:
-                s.setCcc(q);
-                break;
+Student[] s1 = {s, t, b};
+        for (Student str : s1) {
+            int i = in.nextInt();
+            System.out.println("请下一个同学选课");
+            switch (i) {
+                case 1:
+                    str.setCcc(q);
+                    System.out.println("你选的是第一个的课程");
+                    System.out.println("您的信息为");
+                    System.out.println(str);
+                    names.add(str);
+                    break;
+                default:
+                    System.out.println("选课无效!");
+                    return;
+            }
+        }
+
 ```
 9.Test类中的退课功能的实现：
 ```
-if(x==1) {
-            s.setCcc(null);
-            System.out.println("退课成功！");
-            System.out.println(s);
+Student[] s2 = {s, t, b};
+        for (Student str : s1) {
+            int x = in.nextInt();
+            if (x == 1) {
+                str.setCcc(null);
+                names.remove(str);
+                System.out.println("退课成功！");
+                System.out.println(str);
+                //sti[]=null;
+            } else {
+                System.out.println("退课结束!");
+            }
         }
+```
+10.打印选课信息列表功能的实现：
+```
+System.out.println("打印课程列表2");
+        for (Object object : names) {
+            System.out.println(object);
+        }
+        System.out.println("\n----------------------");
 ```
 # 六、流程图
 ![img_3](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E8%AE%A1191%20%E8%B4%BE%E5%BF%B1%E5%81%A5%202019310177%20%E6%B5%81%E7%A8%8B%E5%9B%BE.png)
