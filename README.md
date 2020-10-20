@@ -160,7 +160,7 @@ System.out.println("打印课程列表2");
         System.out.println("\n----------------------");
 ```
 # 六、流程图  
-![img_3](https://github.com/ChenJian-Jia/Java_experiment_three)  
+![img_3](https://github.com/ChenJian-Jia/Java_experiment_three/blob/main/img/%E6%94%B9%E8%BF%9B%E8%BF%87%E5%90%8E%E7%9A%84%E4%BB%A3%E7%A0%81%E7%9A%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png)  
 # 七、实验结果：
 实验结果一图片：  
 ![img_1](https://github.com/ChenJian-Jia/Java_experiment_three/commit/de18a9dd3785de0871ffd8eea46b844d54db3a9a)  
